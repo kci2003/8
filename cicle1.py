@@ -10,13 +10,12 @@ step = 1
 while i <= n2:
     p = 1
     #print('\n',)
-    while p <= 4:
+    while p <= 4:#повороты лп\вн\пл\нв
          step = 1
-
          while step < c and e:
              print(i, end=' ')
              #if p == 1:
-             #m[row][j] = i
+             m[row][step -1] = i
              i = i + 1
              if i > n2:
                  e = False
@@ -24,7 +23,7 @@ while i <= n2:
              #print('-', end=' ')
          p = p + 1
          print('-', end=' ')
-
+         break
     c = c - 2
     if c == 1:
         print(i, end=' ')
