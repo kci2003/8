@@ -1,0 +1,38 @@
+import xlrd
+import statistics
+from operator import itemgetter, attrgetter
+d = {}
+wb = xlrd.open_workbook('C:\\temp\\trekking1.xlsx')
+sheet_names = wb.sheet_names()
+sh = wb.sheet_by_name(sheet_names[0])
+# print(sheet_names[0])
+# print(len(sh.row_values(1)))
+# print(len(sh.col_values(1)))
+a = ()
+for i in range(1,len(sh.col_values(1))):
+    # a.append(sh.col_values(1)[i])
+# d[str(sh.col_values(1)[i]) + str(sh.col_values(0)[i])] = sh.col_values(0)[i]
+    d[(int(sh.col_values(1)[i]),sh.col_values(0)[i])] = sh.col_values(0)[i]
+    #print(i,sh.col_values(0)[i])
+#print(d)
+#for k in sorted(d.keys(),reverse=True):.
+#for k in sorted(d, key=itemgetter([0])):
+for k in sorted(d, key=lambda d: (-d[0],d[1])):
+
+    #  (-x[1], x[0])
+     #print (k, ':', d[k])
+    print(d[k])
+# city = sh.row_values(1)[0]
+# city_val = statistics.median_low(sh.row_values(1)[1:7])
+# for i in range(1,9):
+#     if city_val < statistics.median(sh.row_values(i)[1:7]):
+#         city_val = statistics.median(sh.row_values(i)[1:7])
+#         city = sh.row_values(i)[0]
+#
+# job = sh.col_values(1)[0]
+# salaryJobAvg = statistics.mean(sh.col_values(1)[2:9])
+# for i in range(1,8):
+#     if salaryJobAvg < statistics.mean(sh.col_values(i)[2:9]):
+#         salaryJobAvg = statistics.mean(sh.col_values(i)[2:9])
+#         job = sh.col_values(i)[0]
+# print(city,job)
